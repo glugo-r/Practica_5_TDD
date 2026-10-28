@@ -10,7 +10,7 @@ def sistema():
 #Casos normales
 
 @pytest.mark.parametrize("pesoPaquete", [1, 2, 3, 4, 5])
-def test_Hasta_5kg_Estandar(sistema,pesoPaquete):
+def test_Costo_Paquete_Pequeno_Estandar(sistema,pesoPaquete):
 
     resultado = sistema.Costo_Envio(pesoPaquete, "estandar")
 
@@ -23,7 +23,7 @@ def test_Hasta_5kg_Estandar(sistema,pesoPaquete):
     (50, 500.00),
     (100, 1000.00)
 ])
-def test_Mas_5kg_Estandar(sistema,pesoPaquete, precioEsperado):
+def test_Costo_Paquete_Pesado_Estandar(sistema,pesoPaquete, precioEsperado):
 
     resultado = sistema.Costo_Envio(pesoPaquete, "estandar")
 
@@ -41,7 +41,7 @@ def test_Costo_Pequeño_Express(sistema):
     (50, 1000.00),
     (100, 2000.00)
 ])
-def test_Costo_Pesado_Express(sistema,pesoPaquete, precioEsperado):
+def test_Costo_Paquete_Pesado_Express(sistema,pesoPaquete, precioEsperado):
 
     resultado = sistema.Costo_Envio(pesoPaquete, "express")
 
