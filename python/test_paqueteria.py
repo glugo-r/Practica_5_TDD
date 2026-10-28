@@ -7,8 +7,7 @@ def sistema():
     """Preparación reutilizable para las pruebas."""
     return Paqueteria()
 
-#Casos normales
-
+# Pruebas para envios estandar de peso bajo o igual a 5kg
 @pytest.mark.parametrize("pesoPaquete", [1, 2, 3, 4, 5])
 def test_Costo_Paquete_Pequeno_Estandar(sistema,pesoPaquete):
 
@@ -16,6 +15,7 @@ def test_Costo_Paquete_Pequeno_Estandar(sistema,pesoPaquete):
 
     assert resultado == 50.00
 
+# Pruebas para envios estandar de peso mayor a 5kg
 @pytest.mark.parametrize("pesoPaquete, precioEsperado", [
     (6, 60.00),
     (10, 100.00),
@@ -29,11 +29,13 @@ def test_Costo_Paquete_Pesado_Estandar(sistema,pesoPaquete, precioEsperado):
 
     assert resultado == precioEsperado
 
+# Prueba para envio express pequeno
 def test_Costo_Pequeño_Express(sistema):
 
     resultado = sistema.Costo_Envio(1, "express")
     assert resultado == 100.00
 
+# Pruebas para envios express de peso mayor a 5kg
 @pytest.mark.parametrize("pesoPaquete, precioEsperado", [
     (6, 120.00),
     (10, 200.00),
@@ -47,16 +49,19 @@ def test_Costo_Paquete_Pesado_Express(sistema,pesoPaquete, precioEsperado):
 
     assert resultado == precioEsperado
 
+# Prueba para validar peso negativo
 def test_Peso_Negativo(sistema):
 
     with pytest.raises(ValueError):
         sistema.Costo_Envio(-1, "estandar")
 
+# Prueba para validar peso igual a cero
 def test_Peso_Cero(sistema):
 
     with pytest.raises(ValueError):
         sistema.Costo_Envio(0, "express")
 
+# Prueba para validar tipos de envio no permitidos
 def test_Tipo_Envio_Invalido(sistema):
 
     with pytest.raises(ValueError):
