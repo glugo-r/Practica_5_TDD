@@ -29,9 +29,9 @@ def test_Mas_5kg_Estandar(sistema,pesoPaquete, precioEsperado):
 
     assert resultado == precioEsperado
 
-def test_Costo_Pequeño_Expres(sistema):
+def test_Costo_Pequeño_Express(sistema):
 
-    resultado = sistema.Costo_Envio(1, "expres")
+    resultado = sistema.Costo_Envio(1, "express")
     assert resultado == 100.00
 
 @pytest.mark.parametrize("pesoPaquete, precioEsperado", [
@@ -41,9 +41,9 @@ def test_Costo_Pequeño_Expres(sistema):
     (50, 1000.00),
     (100, 2000.00)
 ])
-def test_Costo_Pesado_Expres(sistema,pesoPaquete, precioEsperado):
+def test_Costo_Pesado_Express(sistema,pesoPaquete, precioEsperado):
 
-    resultado = sistema.Costo_Envio(pesoPaquete, "expres")
+    resultado = sistema.Costo_Envio(pesoPaquete, "express")
 
     assert resultado == precioEsperado
 
@@ -55,7 +55,7 @@ def test_Peso_Negativo(sistema):
 def test_Peso_Cero(sistema):
 
     with pytest.raises(ValueError):
-        sistema.Costo_Envio(0, "expres")
+        sistema.Costo_Envio(0, "express")
 
 def test_Tipo_Envio_Invalido(sistema):
 

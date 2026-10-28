@@ -7,7 +7,7 @@ class Paqueteria:
        if pesoPaquete <= 0:
                raise ValueError("El peso del paquete debe ser mayor que cero")
 
-       if tipoEnvio not in ("estandar", "expres"):
+       if tipoEnvio not in ("estandar", "express"):
                raise ValueError("Tipo de envio no valido")
 
        if pesoPaquete <= 5 and tipoEnvio == "estandar":
@@ -17,10 +17,10 @@ class Paqueteria:
                   costoExtra = (pesoPaquete - 5) * 10
                   return 50.00 + costoExtra
        
-       if pesoPaquete <= 5 and tipoEnvio == "expres":
+       if pesoPaquete <= 5 and tipoEnvio == "express":
               return 100.00
 
-       if pesoPaquete > 5 and tipoEnvio == "expres":
+       if pesoPaquete > 5 and tipoEnvio == "express":
                          costoExtra = (pesoPaquete - 5) * 10
                          return (50.00 + costoExtra) * 2
 
